@@ -1,7 +1,9 @@
+import Banner from "@/components/Banner";
+
 export default function Home() {
   return (
-    <div>
-      <h2 className="text-4xl font-semibold text-red-400">This is Home Page</h2>
+    <div className="my-20">
+      <Banner />
     </div>
   );
 }
