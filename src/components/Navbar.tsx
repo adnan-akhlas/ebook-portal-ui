@@ -1,8 +1,5 @@
 "use client";
 
-import Link from "next/link";
-import { useState } from "react";
-import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   NavigationMenu,
@@ -10,9 +7,15 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
+import { navlinks } from "@/constants/navlinks";
+import { Menu, X } from "lucide-react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useState } from "react";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
     <nav className="w-full border-b bg-background">
@@ -26,13 +29,18 @@ export default function Navbar() {
         <div className="hidden md:flex">
           <NavigationMenu>
             <NavigationMenuList>
-              <NavigationMenuItem>
-                <NavigationMenuLink asChild>
-                  <Link href="/" className="px-4 py-2">
-                    Home
-                  </Link>
-                </NavigationMenuLink>
-              </NavigationMenuItem>
+              {navlinks.map((link) => (
+                <NavigationMenuItem key={link.label}>
+                  <NavigationMenuLink
+                    data-active={link.href === pathname}
+                    asChild
+                  >
+                    <Link className="px-4 py-2" href={link.href}>
+                      {link.label}
+                    </Link>
+                  </NavigationMenuLink>
+                </NavigationMenuItem>
+              ))}
             </NavigationMenuList>
           </NavigationMenu>
         </div>
@@ -58,11 +66,19 @@ export default function Navbar() {
       <div
         className={`md:hidden border-t bg-sidebar-primary-foreground px-4 py-4 space-y-3 transition-all duration-300 absolute w-full ${isOpen ? "top-16" : "-top-50"}`}
       >
-        <Button asChild>
-          <Link href="/" className="block">
-            Home
-          </Link>
-        </Button>
+        <div className="flex flex-col gap-2 w-fit">
+          {navlinks.map((link) => (
+            <Button
+              key={link.label}
+              variant={link.href === pathname ? "default" : "outline"}
+              asChild
+            >
+              <Link href={link.href} className="block">
+                {link.label}
+              </Link>
+            </Button>
+          ))}
+        </div>
         <Button className="w-full">Login</Button>
       </div>
     </nav>
