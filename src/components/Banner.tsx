@@ -8,6 +8,7 @@ export default function Banner() {
         <Image
           src="/texture.jpg"
           alt="background texture"
+          sizes="(max-width: 768px) 100vw, 33vw"
           fill
           className="object-cover"
           priority
@@ -28,6 +29,7 @@ export default function Banner() {
           <Image
             src="/hand-holding-book.png"
             alt="Hand holding an open book"
+            sizes="(max-width: 768px) 100vw, 33vw"
             fill
             className="object-contain object-bottom-right"
           />

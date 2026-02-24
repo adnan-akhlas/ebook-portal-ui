@@ -37,10 +37,6 @@
   --sidebar-border: oklch(0.87 0.08 65.83);
   --sidebar-ring: oklch(0.7 0.17 28.12);
 
-  --font-sans: Nunito, Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
-  --font-serif: Lora, ui-serif, Georgia, Cambria, Times New Roman, Times, serif;
-  --font-mono: Fira Code, ui-monospace, SFMono-Regular;
-
   --radius: 0.6rem;
 
   --shadow-2xs: 0px 1px 3px 0px oklch(0.7 0.17 28.12 / 0.03);

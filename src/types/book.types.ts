@@ -3,12 +3,13 @@ interface IAuthor {
 }
 
 export interface IBook {
-  _id: string;
+  slug: string;
   title: string;
-  author: IAuthor;
+  description: string;
+  author: IAuthor | null;
   coverImage: string;
   file: string;
   genre: string;
-  createdAt: string;
-  updatedAt: string;
+  createdAt?: string;
+  updatedAt?: string;
 }
