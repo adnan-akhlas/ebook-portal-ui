@@ -1,4 +1,4 @@
-import { getBookAction } from "@/actions/books.actions";
+import { getBookAction, getBooksAction } from "@/actions/books.actions";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -7,11 +7,18 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { IBook } from "@/types/book.types";
 import Image from "next/image";
 import Link from "next/link";
 
 interface IBookPageProps {
   params: Promise<{ slug: string }>;
+}
+
+export async function generateStaticParams() {
+  const { data: books } = await getBooksAction();
+
+  return books.map((book: IBook) => ({ slug: book.slug }));
 }
 
 export default async function BookPage({ params }: IBookPageProps) {
