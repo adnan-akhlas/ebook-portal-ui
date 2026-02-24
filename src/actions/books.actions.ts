@@ -1,4 +1,5 @@
 export async function getBooksAction() {
+  // await new Promise((resolve) => setTimeout(resolve, 10000));
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/books`);
     if (!response.ok) {
